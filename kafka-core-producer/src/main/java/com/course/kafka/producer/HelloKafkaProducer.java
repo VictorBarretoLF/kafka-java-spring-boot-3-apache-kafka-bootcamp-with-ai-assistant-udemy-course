@@ -13,11 +13,15 @@ public class HelloKafkaProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    @Scheduled(fixedRate = 1)
+    @Scheduled(fixedRate = 10000)
     public void sendMessage() {
         String randomName = "User" + UUID.randomUUID().toString().substring(0, 8);
-        System.out.println("Sending message: " + randomName);
-        kafkaTemplate.send("t-test-topic", "Hello " + randomName);
+        try {
+            kafkaTemplate.send("t-test-topic", "Hello " + randomName);
+            System.out.println("Sent message: Hello " + randomName);
+        } catch (Exception e) {
+            System.err.println("Failed to send message: " + e.getMessage());
+        }
     }
 
 }
