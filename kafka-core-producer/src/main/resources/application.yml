@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: kafka-core-producer
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
