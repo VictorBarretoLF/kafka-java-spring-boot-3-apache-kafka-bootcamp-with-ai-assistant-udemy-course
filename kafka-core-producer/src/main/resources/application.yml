@@ -7,10 +7,14 @@ spring:
 
   kafka:
     producer:
-      bootstrap-servers: localhost:9094
+      bootstrap-servers: localhost:9092
 
 app:
   kafka:
     producer:
       HelloKafkaProducer:
         enabled: false
+      FixedRateProducer:
+        enabled: false
+      KafkaKeyProducer:
+        enabled: true

@@ -140,3 +140,17 @@ kafka-topics --delete --topic=teste --bootstrap-server=localhost:9092
 ```bash
 kafka-console-producer --bootstrap-server=localhost:9092 --topic=product-created-events-topic --property="print.key=true" --property="key.separator=:"
 ```
+
+# 40. Producing Message With Key
+
+```bash
+docker exec -it kafka bash
+
+kafka-topics --create --topic=t-multi-partitions --bootstrap-server=localhost:9092 --partitions=3
+
+kafka-topics --bootstrap-server=localhost:9092 --describe --topic=t-multi-partitions
+
+kafka-console-consumer --bootstrap-server=localhost:9092 --topic=t-multi-partitions --group=t-multi-partitions-group
+
+kafka-topics --bootstrap-server=localhost:9092 --alter --topic=t-multi-partitions --partitions=4
+```
